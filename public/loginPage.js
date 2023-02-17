@@ -3,8 +3,6 @@
 const personeForm = new UserForm();
 
 personeForm.loginFormCallback = (data) => {
-  const { login, password } = data;
-
   const request = (answer) => {
     if (answer.success) {
       location.reload();
@@ -12,12 +10,10 @@ personeForm.loginFormCallback = (data) => {
       personeForm.setLoginErrorMessage(answer.error);
     }
   };
-  ApiConnector.login({ login, password }, request);
+  ApiConnector.login(data, request);
 };
 
 personeForm.registerFormCallback = (data) => {
-  const { login, password } = data;
-
   const request = (answer) => {
     if (answer.success) {
       location.reload();
@@ -25,5 +21,5 @@ personeForm.registerFormCallback = (data) => {
       personeForm.setRegisterErrorMessage(answer.error);
     }
   };
-  ApiConnector.register({ login, password }, request);
+  ApiConnector.register(data, request);
 };
